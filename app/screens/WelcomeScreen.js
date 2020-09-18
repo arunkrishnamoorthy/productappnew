@@ -12,8 +12,8 @@ function WelcomeScreen({ navigation }) {
       source={require("../assets/background.jpg")}
     >
       <View style={styles.logoContainer}>
-        <Image style={styles.logo} source={require("../assets/logo-red.png")} />
-        <Text style={styles.tagline}>Sell What You Don't Need</Text>
+        <Image style={styles.logo} source={require("../assets/logo1.png")} />
+        <Text style={styles.tagline}>Products Catalog</Text>
       </View>
       <View style={styles.buttonsContainer}>
         <Button
@@ -41,18 +41,21 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   logo: {
-    width: 100,
+    width: 150,
     height: 100,
   },
   logoContainer: {
     position: "absolute",
     top: 70,
     alignItems: "center",
+    justifyContent: "center",
   },
   tagline: {
     fontSize: 25,
     fontWeight: "600",
     paddingVertical: 20,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 
