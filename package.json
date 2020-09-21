@@ -36,7 +36,8 @@
     "react-native-web": "~0.11.7",
     "yup": "^0.28.5",
     "expo-secure-store": "~8.1.0",
-    "react-native-paper": "^4.1.0"
+    "react-native-paper": "^4.1.0",
+    "expo-barcode-scanner": "~8.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",

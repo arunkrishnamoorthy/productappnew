@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import * as Yup from "yup";
 
 import {
@@ -14,6 +14,8 @@ import FormImagePicker from "../components/forms/FormImagePicker";
 import listingsApi from "../api/listings";
 import useLocation from "../hooks/useLocation";
 import UploadScreen from "./UploadScreen";
+import Icon from "../components/Icon";
+import colors from "../config/colors";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(1).label("Title"),
@@ -101,6 +103,8 @@ function ListingEditScreen() {
     resetForm();
   };
 
+  const handleOpenBarCodeScanner = () => {};
+
   return (
     <Screen style={styles.container}>
       <UploadScreen
@@ -120,7 +124,12 @@ function ListingEditScreen() {
         validationSchema={validationSchema}
       >
         <FormImagePicker name="images" />
-        <FormField maxLength={255} name="title" placeholder="Title" />
+        <View style={styles.horizontalBox}>
+          <FormField maxLength={40} name="title" placeholder="Title" />
+          <TouchableOpacity onPress={handleOpenBarCodeScanner}>
+            <Icon backgroundColor={colors.primary} name={"barcode"} size={60} />
+          </TouchableOpacity>
+        </View>
         <FormField
           keyboardType="numeric"
           maxLength={8}
@@ -152,6 +161,15 @@ function ListingEditScreen() {
 const styles = StyleSheet.create({
   container: {
     padding: 10,
+  },
+  horizontalBox: {
+    width: 300,
+    flexDirection: "row",
+    alignItems: "center",
+    // justifyContent: "space-evenly",
+  },
+  productNumber: {
+    width: 40,
   },
 });
 export default ListingEditScreen;

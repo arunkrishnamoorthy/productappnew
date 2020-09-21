@@ -10,7 +10,7 @@ function CategoryPickerItem({ item, onPress }) {
       <TouchableOpacity onPress={onPress}>
         <Icon
           backgroundColor={item.backgroundColor}
-          name={item.icon}
+          name={"barcode"}
           size={80}
         />
       </TouchableOpacity>

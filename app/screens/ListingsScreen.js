@@ -114,9 +114,9 @@ function ListingsScreen({ navigation }) {
             />
           )}
         /> */}
-        <View>
+        {/* <View>
           <TextInput></TextInput>
-        </View>
+        </View> */}
         <SectionList
           sections={getListingsApi.data}
           keyExtractor={(listing) => listing.id.toString()}
