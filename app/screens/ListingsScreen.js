@@ -1,13 +1,6 @@
 import React, { useEffect } from "react";
-import {
-  View,
-  TextInput,
-  Text,
-  FlatList,
-  SectionList,
-  StyleSheet,
-} from "react-native";
-
+import { View, Text, TextInput, SectionList, StyleSheet } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import ActivityIndicator from "../components/ActivityIndicator";
 import Button from "../components/Button";
 import Card from "../components/Card";
@@ -22,7 +15,7 @@ import {
   ListItemDeleteAction,
   ListItemSeparator,
 } from "../components/lists";
-// import { TextInput } from "react-native-gesture-handler";
+import { color } from "react-native-reanimated";
 
 function ListingsScreen({ navigation }) {
   const getListingsApi = useApi(listingsApi.getListings);
@@ -114,9 +107,17 @@ function ListingsScreen({ navigation }) {
             />
           )}
         /> */}
-        {/* <View>
-          <TextInput></TextInput>
-        </View> */}
+
+        {/* <TextInput></TextInput> */}
+        <View style={styles.searchbox}>
+          <MaterialCommunityIcons
+            name="filter"
+            size={20}
+            color={colors.secondary}
+            style={styles.icon}
+          />
+          <TextInput style={styles.input}></TextInput>
+        </View>
         <SectionList
           sections={getListingsApi.data}
           keyExtractor={(listing) => listing.id.toString()}
@@ -144,6 +145,21 @@ const styles = StyleSheet.create({
   screen: {
     padding: 5,
     backgroundColor: colors.light,
+  },
+  searchbox: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    borderColor: color.primary,
+    borderStyle: "solid",
+    borderRadius: 15,
+    borderWidth: 0.25,
+  },
+  input: {
+    height: 60,
+    padding: 8,
+    margin: 5,
+    width: "100%",
   },
 });
 

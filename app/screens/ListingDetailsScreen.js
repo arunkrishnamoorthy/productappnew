@@ -17,10 +17,15 @@ import ContactSellerForm from "../components/ContactSellerForm";
 import ListItem from "../components/lists/ListItem";
 import Text from "../components/Text";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import { Rating } from "react-native-ratings";
+import ReactNativeDisqus from "react-native-disqus";
 
 function ListingDetailsScreen({ route }) {
   const listing = route.params;
 
+  const ratingCompleted = (rating) => {
+    console.log("Rating Updated");
+  };
   return (
     <ScrollView style={styles.container}>
       <Image
@@ -42,6 +47,15 @@ function ListingDetailsScreen({ route }) {
             </View>
           </TouchableRipple>
         </View>
+      </View>
+      <View>
+        <Rating
+          ratingColor="#FF6347"
+          ratingBackgroundColor="#c8c7c8"
+          ratingCount={5}
+          onFinishRating={ratingCompleted}
+          style={{ paddingVertical: 10 }}
+        />
       </View>
       {/* User Section */}
       <View style={styles.userInfoSection}>
@@ -107,6 +121,7 @@ function ListingDetailsScreen({ route }) {
             </View>
           </TouchableRipple>
         </View> */}
+      <ReactNativeDisqus id="1" shortname="www-teamabap-com" />
     </ScrollView>
   );
 }

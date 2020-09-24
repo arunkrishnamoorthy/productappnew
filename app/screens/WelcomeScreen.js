@@ -25,6 +25,11 @@ function WelcomeScreen({ navigation }) {
           color="secondary"
           onPress={() => navigation.navigate(routes.REGISTER)}
         />
+        <Button
+          title="Login With Google"
+          color="google"
+          onPress={() => navigation.navigate(routes.REGISTER)}
+        />
       </View>
     </ImageBackground>
   );
