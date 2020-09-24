@@ -37,18 +37,25 @@ function ListingDetailsScreen({ route }) {
       <View style={styles.detailsContainer}>
         <View>
           <Text style={styles.title}>{listing.title}</Text>
-          <Text style={styles.price}>${listing.price}</Text>
+          {/* <Text style={styles.price}>${listing.price}</Text> */}
         </View>
         <View style={styles.menuWrapper}>
-          <TouchableRipple onPress={() => {}}>
+          <Rating
+            ratingColor="#FF6347"
+            ratingBackgroundColor="#c8c7c8"
+            ratingCount={5}
+            onFinishRating={ratingCompleted}
+            style={{ paddingVertical: 10 }}
+          />
+          {/* <TouchableRipple onPress={() => {}}>
             <View style={styles.menuItem}>
               <Icon name="heart-outline" color="#FF6347" size={25} />
-              {/* <Text style={styles.menuItemText}>Set as Favorites</Text> */}
+              
             </View>
-          </TouchableRipple>
+          </TouchableRipple> */}
         </View>
       </View>
-      <View>
+      {/* <View>
         <Rating
           ratingColor="#FF6347"
           ratingBackgroundColor="#c8c7c8"
@@ -56,19 +63,31 @@ function ListingDetailsScreen({ route }) {
           onFinishRating={ratingCompleted}
           style={{ paddingVertical: 10 }}
         />
-      </View>
+      </View> */}
       {/* User Section */}
-      <View style={styles.userInfoSection}>
-        <View style={styles.row}>
-          <Text style={{ color: "green", marginLeft: 20 }}>Available</Text>
+      <View style={styles.dateContainer}>
+        <View>
+          <Title>30/02/2021</Title>
+          <Caption>Availability Date</Caption>
         </View>
-        <View style={styles.row}>
-          <Text style={{ color: "#777777", marginLeft: 20 }}>
+        <View>
+          <Title>30/02/2021</Title>
+          <Caption>Back order Date</Caption>
+        </View>
+      </View>
+      <View>
+        <View>
+          <Text style={{ color: "green", marginLeft: 5, padding: 10 }}>
+            Available
+          </Text>
+        </View>
+        <View>
+          <Text style={{ color: "#777777", marginLeft: 5, padding: 10 }}>
             Finished Product / Automobile
           </Text>
         </View>
       </View>
-      <View style={styles.infoBoxWrapper}>
+      {/* <View style={styles.infoBoxWrapper}>
         <View
           style={[
             styles.infoBoxFull,
@@ -81,35 +100,20 @@ function ListingDetailsScreen({ route }) {
           <Title>48 * 50 * 12 cm</Title>
           <Caption>Dimensions</Caption>
         </View>
-      </View>
+      </View> */}
 
-      <View style={styles.infoBoxWrapper}>
-        <View
-          style={[
-            styles.infoBox,
-            {
-              borderRightColor: "#dddddd",
-              borderRightWidth: 1,
-            },
-          ]}
-        >
+      <View style={styles.materialDetails}>
+        <View>
+          <Title>48 * 50 * 12 cm</Title>
+          <Caption>Dimensions</Caption>
+        </View>
+        <View>
           <Title>₹140.50</Title>
           <Caption>INR</Caption>
         </View>
-        <View style={styles.infoBox}>
+        <View>
           <Title>12</Title>
           <Caption>Orders</Caption>
-        </View>
-      </View>
-
-      <View style={styles.dateContainer}>
-        <View>
-          <Caption>Availability Date</Caption>
-          <Title>30/02/2021</Title>
-        </View>
-        <View>
-          <Caption>Back order Date</Caption>
-          <Title>30/02/2021</Title>
         </View>
       </View>
 
@@ -121,7 +125,7 @@ function ListingDetailsScreen({ route }) {
             </View>
           </TouchableRipple>
         </View> */}
-      <ReactNativeDisqus id="1" shortname="www-teamabap-com" />
+      <ReactNativeDisqus id="1" shortname="productapp" />
     </ScrollView>
   );
 }
@@ -181,8 +185,17 @@ const styles = StyleSheet.create({
   },
   dateContainer: {
     flexDirection: "row",
+    alignItems: "flex-start",
+    justifyContent: "space-between",
+    margin: 5,
+    padding: 5,
+  },
+  materialDetails: {
+    flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-evenly",
+    justifyContent: "space-between",
+    padding: 5,
+    margin: 5,
   },
 });
 

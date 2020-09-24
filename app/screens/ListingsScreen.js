@@ -16,6 +16,8 @@ import {
   ListItemSeparator,
 } from "../components/lists";
 import { color } from "react-native-reanimated";
+import BottomSheet from "reanimated-bottom-sheet";
+import { Caption } from "react-native-paper";
 
 function ListingsScreen({ navigation }) {
   const getListingsApi = useApi(listingsApi.getListings);
@@ -72,6 +74,39 @@ function ListingsScreen({ navigation }) {
     //   data: ["Cheese Cake", "Ice Cream"],
     // },
   ];
+
+  const handleDelete = (item) => {
+    console.log(item);
+    sheetRef.current.snapTo(0);
+  };
+
+  const deleteItem = () => {
+    // alert("The Product has been triggered for deletion");
+    console.log("Delete item triggered");
+  };
+
+  const renderContent = () => (
+    <View
+      style={{
+        backgroundColor: "#fff",
+        padding: 16,
+        height: "100%",
+      }}
+    >
+      <Text>Choose the Appropriate action for deleting the Product</Text>
+      <View>
+        <Button
+          // color={colors.medium}
+          title="Product Discontinued"
+          onPress={deleteItem}
+        />
+        <Button title="Warrant Not Supported" onPress={deleteItem} />
+        <Button title="Other Reasons" onPress={deleteItem} />
+      </View>
+    </View>
+  );
+
+  const sheetRef = React.useRef(null);
 
   return (
     <>
@@ -136,6 +171,12 @@ function ListingsScreen({ navigation }) {
             <Text style={styles.header}>{title}</Text>
           )}
         />
+        <BottomSheet
+          ref={sheetRef}
+          snapPoints={[450, 300, 0]}
+          borderRadius={10}
+          renderContent={renderContent}
+        />
       </Screen>
     </>
   );
@@ -156,8 +197,8 @@ const styles = StyleSheet.create({
     borderWidth: 0.25,
   },
   input: {
-    height: 60,
-    padding: 8,
+    height: 30,
+    // padding: 8,
     margin: 5,
     width: "100%",
   },
